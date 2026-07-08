@@ -1,0 +1,65 @@
+<style>
+  #startButton {
+    background-color: rebeccapurple;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  }
+  #saveButton {
+    background-color:rebeccapurple;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  }
+</style>
+<nav>  <button id="startButton">Start</button></nav>
+<main>
+
+
+
+</main>
+<script src="https://cdn.jsdelivr.net/gh/netizenorg/netnet-standard-library@1.0.1/build/nn.min.js"></script>
+<script>
+  nn.create('button')
+    .set('id', 'saveButton')
+    .content('Save')
+    .addTo('nav')
+    
+    .on('click', function () {
+    let m = nn.get('main')
+    nn.download(m,'dancer-girl.html')
+  })
+  
+  function emoji () {
+    if (!nn.mouseDown) return
+    let x = nn.mouseX
+    let y = nn.mouseY
+    let h = nn.random(360)
+    let s = nn.random(1,5)
+    let url ='https://netnet.studio/dancing-girl.gif'
+    nn.create('img')
+      .set('src',url)
+      //.content('💋')
+      .addTo('main')
+      .positionOrigin('center')
+      //.scale(s)
+      .position(x, y)
+      .css('user-select', 'none')
+      //.rotate(h)
+      //.hueRotate(h)
+  }
+
+  //nn.times(100, emoji)
+  nn.on('mousemove',emoji)
+
+</script>
